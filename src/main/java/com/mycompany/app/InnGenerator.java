@@ -54,6 +54,7 @@ public class InnGenerator {
             String inn = "9" + generateNumber(9);
             list.add(inn);
         }
+        //перемешиваем номера
         Collections.shuffle(list);
         ;
         return list;
