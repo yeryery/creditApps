@@ -24,11 +24,11 @@ public class AttributeGenerator {
         return generate(n, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя");
     }
 
-    public String generateNumber(int n) {
+    private String generateNumber(int n) {
         return generate(n, "0123456789");
     }
 
-    public String getTodaysTime(String pattern) {
+    private String getTodaysTime(String pattern) {
         final Random random = new Random();
         LocalDateTime time = LocalDateTime.of(LocalDate.now(),
                 LocalTime.of(random.nextInt(24), random.nextInt(60),
@@ -43,7 +43,7 @@ public class AttributeGenerator {
         return time.format(formatter);
     }
 
-    public String getRandomDate(int startYear, int range, String pattern) {
+    private String getRandomDate(int startYear, int range, String pattern) {
         final Random random = new Random();
         LocalDateTime time = LocalDateTime.of(LocalDate.of(random.nextInt(range) + startYear,
                 random.nextInt(12) + 1, random.nextInt(27) + 1), LocalTime.NOON);
@@ -51,7 +51,7 @@ public class AttributeGenerator {
         return formatTime(time, pattern);
     }
 
-    public String getFio() {
+    private String getFio() {
         String lastName = generateString(5);
         String firstName = generateString(5);
         String middleName = generateString(5);
@@ -59,18 +59,14 @@ public class AttributeGenerator {
         return lastName + "," + firstName + "," + middleName;
     }
 
-    public String getPassport() {
+    private String getPassport() {
         String docSer = generateNumber(4);
         String docNum = generateNumber(6);
         ;
         return docSer + "," + docNum;
     }
 
-    public String getInn(List list) {
-        return (String) list.remove(0);
-    }
-
-    public String getAddress() {
+    private String getAddress() {
         String countryCd = "643";
         String countryName = "РОССИЯ";
         String postcode = generateNumber(6);
@@ -85,100 +81,71 @@ public class AttributeGenerator {
                 regionName + "," + city + "," + street + "," + house + "," + flat;
     }
 
-    public String getTk() {
+    private String getTk() {
         String tkSeries = "TK-II";
         String tkNumber = generateNumber(7);
         ;
         return tkSeries + "," + tkNumber;
     }
 
-    public String getPhoneNumber() {
+    private String getPhoneNumber() {
         return "+79" + generateNumber(9);
     }
 
-    public List createInnList() {
-        List<String> list = new ArrayList<>();
+    public String generateAttribures() {
+        String datePattern = "yyyy-MM-dd'T'HH:mm:ss";
+        String applicationDate = getTodaysTime(datePattern);
+        String signDate = applicationDate;
+        String appStatusDate = applicationDate;
 
-        //Крупнейшие работодатели 20 инн по 25000 заявок
-        for (int i = 0; i < 20; i++) {
-            String inn = "1" + generateNumber(9);
-            for (int j = 0; j < 25000; j++) {
-                list.add(inn);
-            }
-        }
+        String applicationExternalId = generateNumber(8);
 
-        //Крупные работодатели 200 инн по 5000 заявок
-        for (int i = 0; i < 200; i++) {
-            String inn = "2" + generateNumber(9);
-            for (int j = 0; j < 5000; j++) {
-                list.add(inn);
-            }
-        }
-        //Средние 2000 инн по 500 заявок
-        for (int i = 0; i < 2000; i++) {
-            String inn = "3" + generateNumber(9);
-            for (int j = 0; j < 500; j++) {
-                list.add(inn);
-            }
-        }
+        String numberPattern = "yyyyMMddHHmmss";
+        String applicationNumber = "3-" + getTodaysTime(numberPattern) + "-2";
 
-        //Малые 20 000 инн по 50 заявок
-        for (int i = 0; i < 20000; i++) {
-            String inn = "4" + generateNumber(9);
-            for (int j = 0; j < 50; j++) {
-                list.add(inn);
-            }
-        }
+        String participantId = generateNumber(8);
 
-        //Микро 200 000 инн по 5 заявок
-        for (int i = 0; i < 200000; i++) {
-            String inn = "5" + generateNumber(9);
-            for (int j = 0; j < 5; j++) {
-                list.add(inn);
-            }
-        }
+        String applicationCode = "Ввод данных";
+        String status = appStatusDate + applicationCode;
 
-        //Уникальные 1000 000 разных инн
-        for (int i = 0; i < 1000000; i++) {
-            String inn = "9" + generateNumber(9);
-            list.add(inn);
-        }
-        Collections.shuffle(list);
-        ;
-        return list;
-    }
+        String clientCategory = "5";
+        String fio = getFio();
+        String prevFio = "";
 
-    public List createTestList() {
-        List<String> list = new ArrayList<>();
+        String dateOfBirth = getRandomDate(1950, 50, datePattern);
 
-        for (int i = 0; i < 1; i++) {
-            String inn = "1" + generateNumber(9);
-            for (int j = 0; j < 50; j++) {
-                list.add(inn);
-            }
-        }
+        String passport = getPassport();
+        String prevPassport = "";
 
-        for (int i = 0; i < 5; i++) {
-            String inn = "2" + generateNumber(9);
-            for (int j = 0; j < 10; j++) {
-                list.add(inn);
-            }
-        }
+        String addressLive = getAddress();
+        String addressReg = "";
+        String addressTimeReg = "";
 
-        for (int i = 0; i < 20; i++) {
-            String inn = "3" + generateNumber(9);
-            for (int j = 0; j < 5; j++) {
-                list.add(inn);
-            }
-        }
+        String tk = getTk();
+        String tkDate = getRandomDate(1995, 20, datePattern);
 
-        for (int i = 0; i < 50; i++) {
-            String inn = "9" + generateNumber(9);
-            list.add(inn);
-        }
+        String phoneHome = getPhoneNumber();
+        String phoneMobile = getPhoneNumber();
+        String phoneReg = getPhoneNumber();
+        String phoneWork = getPhoneNumber();
 
-        Collections.shuffle(list);
-        ;
-        return list;
+        String phoneCompany = getPhoneNumber();
+        String startDate = getRandomDate(1995, 20, datePattern);
+        String registrationDate = getRandomDate(1995, 20, datePattern);
+        String jobTitleType = "Руководитель среднего звена";
+
+        return applicationDate + "," + applicationExternalId + "," + applicationNumber + "," + signDate + "," +
+                status + "," + participantId + "," + clientCategory + "," + fio + "," + prevFio + "," + dateOfBirth + "," +
+                passport + "," + prevPassport + "," + addressLive + "," + addressReg + "," + addressTimeReg + "," +
+                tk + "," + tkDate + "," + phoneHome + "," + phoneMobile + "," + phoneReg + "," + phoneWork + "," +
+                phoneCompany + "," + startDate + "," + registrationDate + "," + jobTitleType;
+        /*
+            applicationDate, applicationExternalId, applicationNumber, signDate, status (appStatusDate, appStatusCode),
+            participantId, clientCategory?, fio(lastName, firstName, middleName), prevfio, dateOfBirth,
+            passport(docSer, docNum), prevPassport(docSer, docNum),
+            addressLive(countryCd, countryName, postcode, regionCd, regionName, city, street, house, flat),
+            addressReg, addressTimeReg, tkSeries, tkNumber, tkDate, phoneHome, phoneMobile, phoneReg, phoneWork,
+            phoneCompany, decisionCode?, codeValue?, startDate, registrationDate, jobTitleType?
+            */
     }
 }
