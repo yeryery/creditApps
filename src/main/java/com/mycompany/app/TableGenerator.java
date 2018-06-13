@@ -11,11 +11,11 @@ public class TableGenerator {
 
         JdbcManager manager = new JdbcManager();
         manager.connect("TutorialDB", "name", "pass");
-
-        String tableName = "Companies";
-
         InnGenerator generator = new InnGenerator();
-        List<String> formattedInn = generator.createMiniInnList(manager.getInn(tableName, "Inn"));
+
+        String tableName = "Original_Inn_List";
+        List<String> innList = manager.getInn(tableName, "Inn");
+        List formattedInn = generator.createMiniInnList(innList);
 
         String formatted_Table = "Formatted_Inn";
         manager.cleanTable(formatted_Table);

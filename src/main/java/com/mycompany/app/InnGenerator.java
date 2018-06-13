@@ -70,14 +70,23 @@ public class InnGenerator {
         List<String> list = new ArrayList<>();
         DataGenerationMethods generation = new DataGenerationMethods();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             String inn = getInnfromTable("1", i, innList);
+            for (int j = 0; j < 5; j++) {
+                list.add(inn);
+            }
+            list.add(" ");
+        }
+
+        for (int i = 1; i < 4; i++) {
+            String inn = getInnfromTable("2", i, innList);
             for (int j = 0; j < 3; j++) {
                 list.add(inn);
             }
+            list.add(" ");
         }
 
-        for (int i = 5; i < 10; i++) {
+        for (int i = 4; i < 20; i++) {
             String inn = getInnfromTable("6", i, innList);
             list.add(inn);
         }
