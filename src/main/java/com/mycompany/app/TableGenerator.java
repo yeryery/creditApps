@@ -12,22 +12,22 @@ public class TableGenerator {
         JdbcManager manager = new JdbcManager();
         manager.connect("TutorialDB", "name", "pass");
 
-        String tableName = "Inn_Companies";
-        manager.cleanTable(tableName);
+        String tableName = "Companies";
 
-        fillInn(manager, tableName);
+        InnGenerator generator = new InnGenerator();
+        List<String> formattedInn = generator.createMiniInnList(manager.getInn(tableName, "Inn"));
+
+        String formatted_Table = "Formatted_Inn";
+        manager.cleanTable(formatted_Table);
+
+        for (Object app:formattedInn) {
+            manager.insertValues(formatted_Table, (String) app);
+        }
+
         printTable(manager, tableName);
+        printTable(manager, formatted_Table);
 
         manager.closeOpenedConnection();
-    }
-
-    private static void fillInn(JdbcManager manager, String tableName) throws SQLException {
-        InnGenerator generator = new InnGenerator();
-        List innList = generator.createMiniInnList();
-
-        for (Object inn:innList) {
-            manager.insertValues(tableName, (String) inn);
-        }
     }
 
     private static void fillAttributes(JdbcManager manager, String tableName) throws SQLException {
