@@ -93,6 +93,7 @@ public class AttributeGenerator {
     }
 
     public String generateAttribures() {
+        //TODO сделать уникальные номера заявок
         String datePattern = "yyyy-MM-dd'T'HH:mm:ss";
         String applicationDate = getTodaysTime(datePattern);
         String signDate = applicationDate;
@@ -106,20 +107,16 @@ public class AttributeGenerator {
         String participantId = generateNumber(8);
 
         String applicationCode = "Ввод данных";
-        String status = appStatusDate + applicationCode;
+        String status = appStatusDate + "," + applicationCode;
 
         String clientCategory = "5";
         String fio = getFio();
-        String prevFio = "";
 
         String dateOfBirth = getRandomDate(1950, 50, datePattern);
 
         String passport = getPassport();
-        String prevPassport = "";
 
         String addressLive = getAddress();
-        String addressReg = "";
-        String addressTimeReg = "";
 
         String tk = getTk();
         String tkDate = getRandomDate(1995, 20, datePattern);
@@ -132,20 +129,17 @@ public class AttributeGenerator {
         String phoneCompany = getPhoneNumber();
         String startDate = getRandomDate(1995, 20, datePattern);
         String registrationDate = getRandomDate(1995, 20, datePattern);
-        String jobTitleType = "Руководитель среднего звена";
 
         return applicationDate + "," + applicationExternalId + "," + applicationNumber + "," + signDate + "," +
-                status + "," + participantId + "," + clientCategory + "," + fio + "," + prevFio + "," + dateOfBirth + "," +
-                passport + "," + prevPassport + "," + addressLive + "," + addressReg + "," + addressTimeReg + "," +
-                tk + "," + tkDate + "," + phoneHome + "," + phoneMobile + "," + phoneReg + "," + phoneWork + "," +
-                phoneCompany + "," + startDate + "," + registrationDate + "," + jobTitleType;
+                status + "," + participantId + "," + clientCategory + "," + fio + "," + dateOfBirth + "," +
+                passport + "," + addressLive + "," + tk + "," + tkDate + "," + phoneHome + "," + phoneMobile + "," +
+                phoneReg + "," + phoneWork + "," + phoneCompany + "," + startDate + "," + registrationDate;
         /*
             applicationDate, applicationExternalId, applicationNumber, signDate, status (appStatusDate, appStatusCode),
-            participantId, clientCategory?, fio(lastName, firstName, middleName), prevfio, dateOfBirth,
-            passport(docSer, docNum), prevPassport(docSer, docNum),
+            participantId, clientCategory?, fio(lastName, firstName, middleName), dateOfBirth, passport(docSer, docNum),
             addressLive(countryCd, countryName, postcode, regionCd, regionName, city, street, house, flat),
-            addressReg, addressTimeReg, tkSeries, tkNumber, tkDate, phoneHome, phoneMobile, phoneReg, phoneWork,
-            phoneCompany, decisionCode?, codeValue?, startDate, registrationDate, jobTitleType?
+            tkSeries, tkNumber, tkDate, phoneHome, phoneMobile, phoneReg, phoneWork, phoneCompany, decisionCode?,
+            codeValue?, startDate, registrationDate, jobTitleType?
             */
     }
 }

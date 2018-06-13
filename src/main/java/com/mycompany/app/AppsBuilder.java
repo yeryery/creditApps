@@ -59,10 +59,10 @@ public class AppsBuilder {
             }
         }
 
-        for (int i = 0; i < uniqueClients * 0.04; i++) {
+        for (int i = 0; i < uniqueClients * 0.01; i++) {
             String attributes = generator.generateAttribures();
 
-            for (int j = 0; j < 20; j++) {
+            for (int j = 0; j < 21; j++) {
                 list.add(attributes);
             }
         }
