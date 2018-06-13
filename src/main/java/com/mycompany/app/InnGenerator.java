@@ -1,19 +1,16 @@
 package com.mycompany.app;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class InnGenerator {
 
     public List createInnList(List<String> innList) {
-        List<String> list = new ArrayList<>();
+        List<String> list = new LinkedList<>();
         DataGenerationMethods generation = new DataGenerationMethods();
 
         //Крупнейшие работодатели 20 инн по 25000 заявок
         for (int i = 0; i < 20; i++) {
-            String inn = getInnfromTable("1", i, innList);
+            String inn = getInnfromTable("1", innList);
             for (int j = 0; j < 25000; j++) {
                 list.add(inn);
             }
@@ -21,14 +18,14 @@ public class InnGenerator {
 
         //Крупные работодатели 200 инн по 5000 заявок
         for (int i = 0; i < 200; i++) {
-            String inn = getInnfromTable("2", i, innList);
+            String inn = getInnfromTable("2", innList);
             for (int j = 0; j < 5000; j++) {
                 list.add(inn);
             }
         }
         //Средние 2000 инн по 500 заявок
         for (int i = 0; i < 2000; i++) {
-            String inn = getInnfromTable("3", i, innList);
+            String inn = getInnfromTable("3", innList);
             for (int j = 0; j < 500; j++) {
                 list.add(inn);
             }
@@ -36,7 +33,7 @@ public class InnGenerator {
 
         //Малые 20 000 инн по 50 заявок
         for (int i = 0; i < 20000; i++) {
-            String inn = getInnfromTable("4", i, innList);
+            String inn = getInnfromTable("4", innList);
             for (int j = 0; j < 50; j++) {
                 list.add(inn);
             }
@@ -44,7 +41,7 @@ public class InnGenerator {
 
         //Микро 200 000 инн по 5 заявок
         for (int i = 0; i < 200000; i++) {
-            String inn = getInnfromTable("5", i, innList);
+            String inn = getInnfromTable("5", innList);
             for (int j = 0; j < 5; j++) {
                 list.add(inn);
             }
@@ -52,7 +49,7 @@ public class InnGenerator {
 
         //Уникальные 1000 000 разных инн
         for (int i = 0; i < 1000000; i++) {
-            String inn = getInnfromTable("6", i, innList);
+            String inn = getInnfromTable("6", innList);
             list.add(inn);
         }
         //перемешиваем номера
@@ -61,33 +58,33 @@ public class InnGenerator {
         return list;
     }
 
-    private String getInnfromTable(String firstDigit, int i, List<String> innValues) {
-        String inn = innValues.get(i);
+    private String getInnfromTable(String firstDigit, List<String> innValues) {
+        String inn = innValues.remove(0);
         return firstDigit + inn.substring(1);
     }
 
     public List createMiniInnList(List<String> innList) {
-        List<String> list = new ArrayList<>();
+        List<String> list = new LinkedList<>();
         DataGenerationMethods generation = new DataGenerationMethods();
 
         for (int i = 0; i < 1; i++) {
-            String inn = getInnfromTable("1", i, innList);
+            String inn = getInnfromTable("1", innList);
             for (int j = 0; j < 5; j++) {
                 list.add(inn);
             }
             list.add(" ");
         }
 
-        for (int i = 1; i < 4; i++) {
-            String inn = getInnfromTable("2", i, innList);
+        for (int i = 0; i < 3; i++) {
+            String inn = getInnfromTable("2", innList);
             for (int j = 0; j < 3; j++) {
                 list.add(inn);
             }
             list.add(" ");
         }
 
-        for (int i = 4; i < 20; i++) {
-            String inn = getInnfromTable("6", i, innList);
+        for (int i = 0; i < 15; i++) {
+            String inn = getInnfromTable("6", innList);
             list.add(inn);
         }
         return list;
