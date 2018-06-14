@@ -14,13 +14,13 @@ public class TableGenerator {
         InnGenerator generator = new InnGenerator();
 
         String tableName = "Original_Inn_List";
-        List<String> innList = manager.getInn(tableName, "Inn");
-        List formattedInn = generator.createMiniInnList(innList);
+        List<String> innList = manager.getInnFromOriginalTable(tableName, "Inn");
+        List formattedInnList = generator.demoFormatInnList(innList);
 
         String formatted_Table = "Formatted_Inn";
         manager.cleanTable(formatted_Table);
 
-        for (Object app:formattedInn) {
+        for (Object app:formattedInnList) {
             manager.insertValues(formatted_Table, (String) app);
         }
 

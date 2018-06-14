@@ -89,7 +89,7 @@ public class JdbcManager {
         return result;
     }
 
-    public List<String> getInn(String tableName, String columnName) throws SQLException {
+    public List<String> getInnFromOriginalTable(String tableName, String columnName) throws SQLException {
         List<String> result = new LinkedList<>();
         String sql = String.format("SELECT %s FROM %s", columnName, tableName);
 
