@@ -10,7 +10,7 @@ public class InnGenerator {
 
         //Крупнейшие работодатели 20 инн по 25000 заявок
         for (int i = 0; i < 20; i++) {
-            String inn = formatInnFromTable("1", innList);
+            String inn = formatInnFromTable("9", innList);
             for (int j = 0; j < 25000; j++) {
                 list.add(inn);
             }
@@ -18,14 +18,14 @@ public class InnGenerator {
 
         //Крупные работодатели 200 инн по 5000 заявок
         for (int i = 0; i < 200; i++) {
-            String inn = formatInnFromTable("2", innList);
+            String inn = formatInnFromTable("8", innList);
             for (int j = 0; j < 5000; j++) {
                 list.add(inn);
             }
         }
         //Средние 2000 инн по 500 заявок
         for (int i = 0; i < 2000; i++) {
-            String inn = formatInnFromTable("3", innList);
+            String inn = formatInnFromTable("7", innList);
             for (int j = 0; j < 500; j++) {
                 list.add(inn);
             }
@@ -33,7 +33,7 @@ public class InnGenerator {
 
         //Малые 20 000 инн по 50 заявок
         for (int i = 0; i < 20000; i++) {
-            String inn = formatInnFromTable("4", innList);
+            String inn = formatInnFromTable("6", innList);
             for (int j = 0; j < 50; j++) {
                 list.add(inn);
             }
@@ -49,7 +49,7 @@ public class InnGenerator {
 
         //Уникальные 1000 000 разных инн
         for (int i = 0; i < 1000000; i++) {
-            String inn = formatInnFromTable("6", innList);
+            String inn = formatInnFromTable("0", innList);
             list.add(inn);
         }
         //перемешиваем номера
@@ -76,7 +76,7 @@ public class InnGenerator {
         DataGenerationMethods generation = new DataGenerationMethods();
 
         for (int i = 0; i < 1; i++) {
-            String inn = formatInnFromTable("1", innList);
+            String inn = formatInnFromTable("9", innList);
             for (int j = 0; j < 5; j++) {
                 list.add(inn);
             }
@@ -84,7 +84,7 @@ public class InnGenerator {
         }
 
         for (int i = 0; i < 3; i++) {
-            String inn = formatInnFromTable("3", innList);
+            String inn = formatInnFromTable("5", innList);
             for (int j = 0; j < 3; j++) {
                 list.add(inn);
             }
@@ -92,7 +92,7 @@ public class InnGenerator {
         }
 
         for (int i = 0; i < 15; i++) {
-            String inn = formatInnFromTable("6", innList);
+            String inn = formatInnFromTable("0", innList);
             list.add(inn);
         }
         return list;
