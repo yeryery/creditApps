@@ -24,10 +24,18 @@ public class TableGenerator {
             manager.insertValues(formatted_Table, (String) app);
         }
 
-        printTable(manager, tableName);
-        printTable(manager, formatted_Table);
+        printValues(manager, tableName);
+        System.out.println("____________________");
+        printValues(manager, formatted_Table);
 
         manager.closeOpenedConnection();
+    }
+
+    private static void printValues(JdbcManager manager, String tableName) throws SQLException {
+        List<String> values = manager.getValues(tableName, "Inn");
+        for (String value:values) {
+            System.out.println(value);
+        }
     }
 
     private static void fillAttributes(JdbcManager manager, String tableName) throws SQLException {
@@ -38,19 +46,6 @@ public class TableGenerator {
         for (Object app:appsList) {
             manager.insertValues(tableName, (String) app);
         }
-    }
-
-    private static void printTable(JdbcManager manager, String tableName) throws SQLException {
-        List<DataSet> table = manager.getDataContent(tableName);
-
-        StringBuilder tableString = new StringBuilder();
-
-        for (DataSet record : table)
-        {
-            tableString.append(record).append("\n");
-        }
-
-        System.out.println(tableString);
     }
 
 /*

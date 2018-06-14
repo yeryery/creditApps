@@ -1,7 +1,5 @@
 package com.mycompany.app;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.sql.*;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -69,20 +67,15 @@ public class JdbcManager {
         }
     }
 
-    public List<DataSet> getDataContent(String tableName) throws SQLException {
-        List<DataSet> result = new LinkedList<>();
-        String sql = String.format("SELECT * FROM %s", tableName);
+    public List<String> getValues(String tableName, String columnName) throws SQLException {
+        List<String> result = new LinkedList<>();
+        String sql = String.format("SELECT %s FROM %s", columnName, tableName);
 
         try (Statement st = connection.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
-            ResultSetMetaData rsmd = rs.getMetaData();
 
             while (rs.next()) {
-                DataSet dataSet = new DataSet();
-                result.add(dataSet);
-                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                    dataSet.put(rsmd.getColumnName(i), rs.getObject(i));
-                }
+                result.add(rs.getString(columnName));
             }
         }
 
