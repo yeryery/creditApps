@@ -10,7 +10,7 @@ public class InnGenerator {
 
         //Крупнейшие работодатели 20 инн по 25000 заявок
         for (int i = 0; i < 20; i++) {
-            String inn = getInnfromTable(1, innList);
+            String inn = formatInnFromTable("1", innList);
             for (int j = 0; j < 25000; j++) {
                 list.add(inn);
             }
@@ -18,14 +18,14 @@ public class InnGenerator {
 
         //Крупные работодатели 200 инн по 5000 заявок
         for (int i = 0; i < 200; i++) {
-            String inn = getInnfromTable(2, innList);
+            String inn = formatInnFromTable("2", innList);
             for (int j = 0; j < 5000; j++) {
                 list.add(inn);
             }
         }
         //Средние 2000 инн по 500 заявок
         for (int i = 0; i < 2000; i++) {
-            String inn = getInnfromTable(3, innList);
+            String inn = formatInnFromTable("3", innList);
             for (int j = 0; j < 500; j++) {
                 list.add(inn);
             }
@@ -33,7 +33,7 @@ public class InnGenerator {
 
         //Малые 20 000 инн по 50 заявок
         for (int i = 0; i < 20000; i++) {
-            String inn = getInnfromTable(4, innList);
+            String inn = formatInnFromTable("4", innList);
             for (int j = 0; j < 50; j++) {
                 list.add(inn);
             }
@@ -41,7 +41,7 @@ public class InnGenerator {
 
         //Микро 200 000 инн по 5 заявок
         for (int i = 0; i < 200000; i++) {
-            String inn = getInnfromTable(5, innList);
+            String inn = formatInnFromTable("5", innList);
             for (int j = 0; j < 5; j++) {
                 list.add(inn);
             }
@@ -49,7 +49,7 @@ public class InnGenerator {
 
         //Уникальные 1000 000 разных инн
         for (int i = 0; i < 1000000; i++) {
-            String inn = getInnfromTable(6, innList);
+            String inn = formatInnFromTable("6", innList);
             list.add(inn);
         }
         //перемешиваем номера
@@ -58,10 +58,17 @@ public class InnGenerator {
         return list;
     }
 
-    private String getInnfromTable(int firstDigit, List<String> innValues) {
+//    private String formatInnFromTable(int firstDigit, List<String> innValues) {
+//        String inn = innValues.remove(0);
+//        //меняем 1-ую цифру
+//        return firstDigit + inn.substring(1);
+//    }
+
+    private String formatInnFromTable(String firstDigit, List<String> innValues) {
+        DataGenerationMethods methods = new DataGenerationMethods();
         String inn = innValues.remove(0);
-        //меняем 1-ую цифру
-        return firstDigit + inn.substring(1);
+        //меняем 1-ую и последнюю цифру
+        return methods.formatInnUL(firstDigit, inn);
     }
 
     public List demoFormatInnList(List<String> innList) {
@@ -69,7 +76,7 @@ public class InnGenerator {
         DataGenerationMethods generation = new DataGenerationMethods();
 
         for (int i = 0; i < 1; i++) {
-            String inn = getInnfromTable(1, innList);
+            String inn = formatInnFromTable("1", innList);
             for (int j = 0; j < 5; j++) {
                 list.add(inn);
             }
@@ -77,7 +84,7 @@ public class InnGenerator {
         }
 
         for (int i = 0; i < 3; i++) {
-            String inn = getInnfromTable(3, innList);
+            String inn = formatInnFromTable("3", innList);
             for (int j = 0; j < 3; j++) {
                 list.add(inn);
             }
@@ -85,7 +92,7 @@ public class InnGenerator {
         }
 
         for (int i = 0; i < 15; i++) {
-            String inn = getInnfromTable(6, innList);
+            String inn = formatInnFromTable("6", innList);
             list.add(inn);
         }
         return list;

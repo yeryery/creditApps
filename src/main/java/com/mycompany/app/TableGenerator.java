@@ -43,11 +43,11 @@ public class TableGenerator {
     private static void printTable(JdbcManager manager, String tableName) throws SQLException {
         List<DataSet> table = manager.getDataContent(tableName);
 
-        String tableString = "";
+        StringBuilder tableString = new StringBuilder();
 
         for (DataSet record : table)
         {
-            tableString += record + "\n";
+            tableString.append(record).append("\n");
         }
 
         System.out.println(tableString);

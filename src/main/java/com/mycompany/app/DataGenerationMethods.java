@@ -173,6 +173,18 @@ public class DataGenerationMethods {
 
     }
 
+    String formatInnUL(String firstNumber, String originalInnUL) {
+
+        String innUL = firstNumber;
+
+        innUL += originalInnUL.substring(1, 9);
+
+        innUL += getInnULControlNumber(innUL);
+
+        return innUL;
+
+    }
+
     String getInnFL() {
 
         String innFL = "";
