@@ -68,7 +68,7 @@ public class InnGenerator {
         DataGenerationMethods methods = new DataGenerationMethods();
         String inn = innValues.remove(0);
         //меняем 1-ую и последнюю цифру
-        return methods.formatInnUL(firstDigit, inn);
+        return methods.formatInnULByFirstDigit(firstDigit, inn);
     }
 
     public List demoFormatInnList(List<String> innList) {

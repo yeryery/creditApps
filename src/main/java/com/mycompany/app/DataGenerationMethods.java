@@ -161,9 +161,9 @@ public class DataGenerationMethods {
 
     }
 
-    String getInnUL(String firstNumber) {
+    String getInnUL(String firstDigit) {
 
-        String innUL = firstNumber;
+        String innUL = firstDigit;
 
         innUL += getRandomNaturalNumberWithSpecificLength(8);
 
@@ -173,9 +173,9 @@ public class DataGenerationMethods {
 
     }
 
-    String formatInnUL(String firstNumber, String originalInnUL) {
+    String formatInnULByFirstDigit(String firstDigit, String originalInnUL) {
 
-        String innUL = firstNumber;
+        String innUL = firstDigit;
 
         innUL += originalInnUL.substring(1, 9);
 

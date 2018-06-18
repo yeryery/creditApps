@@ -26,6 +26,7 @@ public class TableGenerator {
 
         printValues(manager, tableName);
         System.out.println("____________________");
+        System.out.println();
         printValues(manager, formatted_Table);
 
         manager.closeOpenedConnection();
